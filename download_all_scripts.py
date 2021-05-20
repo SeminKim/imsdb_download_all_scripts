@@ -48,7 +48,7 @@ def get_script(relative_link):
 
 
 if __name__ == "__main__":
-    response = requests.get('http://www.imsdb.com/all%20scripts/')
+    response = requests.get('http://www.imsdb.com/all-scripts.html')
     html = response.text
 
     soup = BeautifulSoup(html, "html.parser")
@@ -60,5 +60,5 @@ if __name__ == "__main__":
         if not script:
             continue
 
-        with open(os.path.join(SCRIPTS_DIR, title.strip('.html') + '.txt'), 'w') as outfile:
+        with open(os.path.join(SCRIPTS_DIR, title.strip('.html') + '.txt'), 'w', -1, 'utf-8') as outfile:
             outfile.write(script)
